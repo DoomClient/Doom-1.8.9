@@ -28,7 +28,6 @@ public class KillAura extends Module {
     public KillAura() {
         super("KillAura", Keyboard.KEY_R, Category.COMBAT);
     }
-
         @Override
         public void setup() {
             ArrayList<String> options = new ArrayList<>();
