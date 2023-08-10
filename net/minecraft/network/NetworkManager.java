@@ -2,8 +2,8 @@ package net.minecraft.network;
 
 import com.google.common.collect.Queues;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import com.rv4nxz.doom.event.events.EventReceivePacket;
-import com.rv4nxz.doom.event.events.EventSendPacket;
+import dev.doom.event.events.EventReceivePacket;
+import dev.doom.event.events.EventSendPacket;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelException;

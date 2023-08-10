@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.Callable;
 
-import com.rv4nxz.doom.event.events.Event3D;
+import dev.doom.event.events.Event3D;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBed;
 import net.minecraft.block.material.Material;

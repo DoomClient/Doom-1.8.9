@@ -7,8 +7,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
-import com.rv4nxz.doom.Doom;
-import com.rv4nxz.doom.event.events.Event2D;
+import dev.doom.Doom;
+import dev.doom.event.events.Event2D;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;

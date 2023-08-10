@@ -1,8 +1,8 @@
 package net.minecraft.client.entity;
 
-import com.rv4nxz.doom.event.events.EventPostMotionUpdate;
-import com.rv4nxz.doom.event.events.EventPreMotionUpdate;
-import com.rv4nxz.doom.event.events.EventUpdate;
+import dev.doom.event.events.EventPostMotionUpdate;
+import dev.doom.event.events.EventPreMotionUpdate;
+import dev.doom.event.events.EventUpdate;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.MovingSoundMinecartRiding;
 import net.minecraft.client.audio.PositionedSoundRecord;
