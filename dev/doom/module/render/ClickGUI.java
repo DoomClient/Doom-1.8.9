@@ -8,7 +8,7 @@ import org.lwjgl.input.Keyboard;
 
 public class ClickGUI extends Module {
     public ClickGUI() {
-        super("ClickGUI", Keyboard.KEY_RSHIFT, Category.RENDER);
+        super("ClickGUI", "ClickGUI", Keyboard.KEY_RSHIFT, Category.RENDER);
     }
 
     @Override

@@ -3,6 +3,8 @@ package net.minecraft.client.renderer;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.gson.JsonSyntaxException;
+
+import java.awt.*;
 import java.io.IOException;
 import java.nio.FloatBuffer;
 import java.util.Calendar;
@@ -1171,8 +1173,7 @@ public class EntityRenderer implements IResourceManagerReloadListener
         return i > 200 ? 1.0F : 0.7F + MathHelper.sin(((float)i - partialTicks) * (float)Math.PI * 0.2F) * 0.3F;
     }
 
-    public void updateCameraAndRender(float partialTicks, long nanoTime)
-    {
+    public void updateCameraAndRender(float partialTicks, long nanoTime) throws IOException, FontFormatException {
         Config.renderPartialTicks = partialTicks;
         this.frameInit();
         boolean flag = Display.isActive();

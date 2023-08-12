@@ -14,7 +14,7 @@ public class Velocity extends Module {
     public Minecraft mc = Minecraft.getMinecraft();
 
     public Velocity() {
-        super("Velocity", Keyboard.KEY_X, Category.COMBAT);
+        super("Velocity", "Reduces or removes your knockback.", Keyboard.KEY_X, Category.COMBAT);
     }
 
     @EventTarget

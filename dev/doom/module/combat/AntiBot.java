@@ -15,9 +15,8 @@ import java.util.ArrayList;
 
 public class AntiBot extends Module {
     public AntiBot() {
-        super("AntiBot", Keyboard.KEY_K, Category.COMBAT);
+        super("Antibot", "Doesn't attack bots.", Keyboard.KEY_NONE, Category.COMBAT);
     }
-
     @Override
     public void setup() {
         ArrayList<String> options = new ArrayList<>();
@@ -29,7 +28,6 @@ public class AntiBot extends Module {
     @EventTarget
     public void onReceivePacket(EventReceivePacket event) {
         String mode = Doom.instance.settingsManager.getSettingByName("AntiBot Mode").getValString();
-
         if(mode.equalsIgnoreCase("Advanced") && event.getPacket() instanceof S0CPacketSpawnPlayer) {
             S0CPacketSpawnPlayer packet = (S0CPacketSpawnPlayer) event.getPacket();
             double posX = packet.getX() / 32D;
@@ -50,6 +48,8 @@ public class AntiBot extends Module {
     @EventTarget
     public void onUpdate(EventUpdate event) {
         String mode = Doom.instance.settingsManager.getSettingByName("AntiBot Mode").getValString();
+        String capitalizedMode = mode.substring(0, 1).toUpperCase() + mode.substring(1);
+        this.setDisplayName("AntiBot §4" + capitalizedMode);
 
         if(mode.equalsIgnoreCase("Watchdog"))
             for(Object entity : mc.theWorld.loadedEntityList)

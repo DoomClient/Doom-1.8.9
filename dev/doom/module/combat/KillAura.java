@@ -24,9 +24,10 @@ public class KillAura extends Module {
     private float yaw, pitch;
     private boolean others;
     private boolean isBlocking;
+    private float originalPitch;
 
     public KillAura() {
-        super("KillAura", Keyboard.KEY_R, Category.COMBAT);
+        super("KillAura", "Automatically attacks an entity.", Keyboard.KEY_R, Category.COMBAT);
     }
         @Override
         public void setup() {
@@ -37,8 +38,8 @@ public class KillAura extends Module {
             Doom.instance.settingsManager.rSetting(new Setting("Existed", this, 30, 0, 500, true));
             Doom.instance.settingsManager.rSetting(new Setting("Delay", this, 8, 0, 12, true));
             Doom.instance.settingsManager.rSetting(new Setting("FOV", this, 360, 0, 360, false));
+            Doom.instance.settingsManager.rSetting(new Setting("Speed", this, 1, 0.1, 1, false));
             Doom.instance.settingsManager.rSetting(new Setting("Rotations", this, "New", options));
-            Doom.instance.settingsManager.rSetting(new Setting("Speed", this, 1, 0, 10, true));
             Doom.instance.settingsManager.rSetting(new Setting("AutoBlock", this, false));
             Doom.instance.settingsManager.rSetting(new Setting("KeepSprint", this, false));
             Doom.instance.settingsManager.rSetting(new Setting("Invisibles", this, false));
@@ -57,9 +58,6 @@ public class KillAura extends Module {
             return;
         updateTime();
 
-//        yaw = mc.thePlayer.rotationYaw;
-//        pitch = mc.thePlayer.rotationPitch;
-
         boolean block = target != null && Doom.instance.settingsManager.getSettingByName("AutoBlock").getValBoolean() && mc.thePlayer.getHeldItem() != null && mc.thePlayer.getHeldItem().getItem() != null && mc.thePlayer.getHeldItem().getItem() instanceof ItemSword;
         if (block && target.getDistanceToEntity(mc.thePlayer) < 8F) {
             mc.playerController.sendUseItem(mc.thePlayer, mc.theWorld, mc.thePlayer.inventory.getCurrentItem());
@@ -69,20 +67,23 @@ public class KillAura extends Module {
 
         if (rayTraceResult == null || rayTraceResult.entityHit == target) {
             if (Doom.instance.settingsManager.getSettingByName("Rotations").getValString().equalsIgnoreCase("New")) {
-//                float targetYaw = AttackUtil.getRotations(target)[0];
-//                float angleDiff = AttackUtil.getAngleDifference(yaw, targetYaw);
-//                float speed = (float) Doom.instance.settingsManager.getSettingByName("Speed").getValDouble();
-//                yaw += angleDiff * speed;
-//                mc.thePlayer.rotationYaw = yaw;
+                float[] rotations = AttackUtil.getRotations(target);
+                yaw = rotations[0];
+                pitch = rotations[1];
 
-                yaw = AttackUtil.getRotations(target)[0];
-                pitch = AttackUtil.getRotations(target)[1];
+//                float yawAngleDiff = AttackUtil.getAngleDifference(mc.thePlayer.rotationYaw, yaw);
+//                float pitchAngleDiff = AttackUtil.getAngleDifference(mc.thePlayer.rotationPitch, pitch);
+//                float speed = (float) Doom.instance.settingsManager.getSettingByName("Speed").getValDouble();
+//
+//                yaw += yawAngleDiff * speed;
+//                pitch += pitchAngleDiff * speed;
+                event.setYaw(yaw);
+                event.setPitch(pitch);
+
                 mc.thePlayer.rotationYawHead = yaw;
                 mc.thePlayer.renderYawOffset = yaw;
                 mc.thePlayer.rotationPitchHead = pitch;
 
-                event.setYaw(yaw);
-                event.setPitch(pitch);
             } else
                 return;
             if (current - last > 1000 / Doom.instance.settingsManager.getSettingByName("Delay").getValDouble()) {
@@ -103,8 +104,6 @@ public class KillAura extends Module {
     public void onPost(EventPostMotionUpdate event) {
         if (target == null)
             return;
-        mc.thePlayer.rotationYaw = yaw;
-        mc.thePlayer.rotationPitch = pitch;
     }
 
     private void attack(EntityLivingBase entity) {

@@ -13,6 +13,8 @@ import com.mojang.authlib.minecraft.MinecraftSessionService;
 import com.mojang.authlib.properties.Property;
 import com.mojang.authlib.properties.PropertyMap;
 import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
+
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -974,8 +976,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         System.gc();
     }
 
-    private void runGameLoop() throws IOException
-    {
+    private void runGameLoop() throws IOException, FontFormatException {
         long i = System.nanoTime();
         this.mcProfiler.startSection("root");
 

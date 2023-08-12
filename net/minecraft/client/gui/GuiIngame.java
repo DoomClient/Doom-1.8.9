@@ -3,6 +3,9 @@ package net.minecraft.client.gui;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+
+import java.awt.*;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
@@ -97,8 +100,7 @@ public class GuiIngame extends Gui
         this.titleFadeOut = 20;
     }
 
-    public void renderGameOverlay(float partialTicks)
-    {
+    public void renderGameOverlay(float partialTicks) throws IOException, FontFormatException {
         ScaledResolution scaledresolution = new ScaledResolution(this.mc);
         int i = scaledresolution.getScaledWidth();
         int j = scaledresolution.getScaledHeight();

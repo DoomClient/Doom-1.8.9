@@ -6,13 +6,14 @@ import net.minecraft.client.Minecraft;
 public class Module {
     protected Minecraft mc = Minecraft.getMinecraft();
 
-    private String name, displayName;
+    private String name, description, displayName;
     private int key;
     private Category category;
     private boolean toggled;
 
-    public Module(String name, int key, Category category) {
+    public Module(String name, String description, int key, Category category) {
         this.name = name;
+        this.description = description;
         this.key = key;
         this.category = category;
         toggled = false;
@@ -57,7 +58,11 @@ public class Module {
         return toggled;
     }
     public String getDisplayName() {
-        return displayName == null ? name : displayName;
+        if (displayName == null) {
+            return name;
+        } else {
+            return Character.toUpperCase(displayName.charAt(0)) + displayName.substring(1);
+        }
     }
     public void setDisplayName(String displayName) {
         this.displayName = displayName;

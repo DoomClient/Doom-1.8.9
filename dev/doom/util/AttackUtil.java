@@ -2,6 +2,7 @@ package dev.doom.util;
 
 import dev.doom.Doom;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityArmorStand;
@@ -9,6 +10,7 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.MathHelper;
 
 public class AttackUtil {
     public static Minecraft mc = Minecraft.getMinecraft();
@@ -42,7 +44,7 @@ public class AttackUtil {
     }
 
     public static float getAngleDifference(float dir, float yaw) {
-        float f = Math.abs(yaw - dir) % 360F;
+        float f = MathHelper.abs(yaw - dir) % 360F;
         return f > 180F ? 360F - f : f;
     }
 

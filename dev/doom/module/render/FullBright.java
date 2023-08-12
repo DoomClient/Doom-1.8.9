@@ -10,7 +10,7 @@ public class FullBright extends Module {
     private float oldBrightness;
 
     public FullBright() {
-        super("FullBright", Keyboard.KEY_NONE, Category.RENDER);
+        super("FullBright", "Makes your eyes better.", Keyboard.KEY_NONE, Category.RENDER);
     }
 
     @Override

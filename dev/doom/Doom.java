@@ -7,7 +7,7 @@ import dev.doom.event.events.EventKey;
 import dev.doom.module.Module;
 import dev.doom.module.ModuleManager;
 import dev.doom.settings.SettingsManager;
-import dev.doom.ui.HUD;
+import dev.doom.ui.ingame.HUD;
 import org.lwjgl.opengl.Display;
 
 public class Doom {

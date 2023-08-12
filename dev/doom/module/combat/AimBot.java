@@ -13,7 +13,7 @@ public class AimBot extends Module {
     private EntityLivingBase target;
 
     public AimBot() {
-        super("AimBot", 0, Category.COMBAT);
+        super("AimBot", "Aim automatically to the enemy.", 0, Category.COMBAT);
     }
 
     @Override

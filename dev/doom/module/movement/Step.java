@@ -8,7 +8,7 @@ import org.lwjgl.input.Keyboard;
 
 public class Step extends Module {
     public Step() {
-        super("Step", Keyboard.KEY_N, Category.MOVEMENT);
+        super("Step", "Steps more higher.", Keyboard.KEY_N, Category.MOVEMENT);
     }
 
     @EventTarget

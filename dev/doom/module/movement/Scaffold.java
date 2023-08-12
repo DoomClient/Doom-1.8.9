@@ -20,7 +20,7 @@ import org.lwjgl.input.Keyboard;
 
 public class Scaffold extends Module {
     public Scaffold() {
-        super("Scaffold", Keyboard.KEY_G, Category.MOVEMENT);
+        super("Scaffold", "Places block where you go.", Keyboard.KEY_G, Category.MOVEMENT);
     }
 
     @EventTarget
